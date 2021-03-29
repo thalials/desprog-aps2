@@ -94,8 +94,8 @@ void aplica_fft(void fft_forward_inverse(double complex s[MAX_SIZE], double comp
             linha_s[c] = matrix[l][c];
         }
 
-        // transformada normal em linha_s
-        // usei o valor de width pq o ultimo for assume no max, o valor witdh-1, porem ainda n está 100% claro
+        // transformada em linha_s
+        // Para a transformada percorrer cada coluna em uma linha, fft_forward_inverse deve saber qual eh o numero de colunas
         fft_forward_inverse(linha_s, linha_t, width);
 
         // cada linha da matriz terá um valor da transformada 
@@ -114,7 +114,8 @@ void aplica_fft(void fft_forward_inverse(double complex s[MAX_SIZE], double comp
             coluna_s[linha] = matrix[linha][coluna];
         }
 
-        // transformada normal em coluna_s
+        // transformada em coluna_s
+        // Para a transformada percorrer cada linha em uma coluna, fft_forward_inverse deve saber qual eh o numero de linhas
         fft_forward_inverse(coluna_s, coluna_t, height);
 
         // cada coluna da matriz terá um valor da transformada 
